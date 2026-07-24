@@ -3,5 +3,5 @@
 // (Settings -> Networking -> Public Domain on the backend service).
 export const environment = {
   production: true,
-  apiUrl: 'https://REPLACE-WITH-YOUR-BACKEND-URL.up.railway.app'
+  apiUrl: 'https://firstgitrepo-production.up.railway.app'
 };
