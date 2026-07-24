@@ -1,0 +1,30 @@
+.contact-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, hwb(115 84% 7%), #daefd0);
+  padding: 20px;
+}
+
+.contact-card {
+  width: 500px;
+  max-width: 95%;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-wrapper {
+  text-align: center;
+  margin-top: 15px;
+}
+
+button {
+  font-size: 16px;
+  padding: 8px 20px;
+}

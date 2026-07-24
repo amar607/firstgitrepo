@@ -1,0 +1,61 @@
+
+
+
+<section class="featured-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+        <h2 class="text-white"> Featured Posts </h2>
+        <p class="text-white">This will show you all the featured posts available.</p>
+      </div>
+    </div>
+
+    <div class="carousel-wrapper">
+      <!-- Left Arrow -->
+      <button class="scroll-btn left" (click)="scrollLeft('featured')">
+        &#10094;
+      </button>
+
+      <!-- Scrollable container -->
+      <div class="scroll-container" #featuredScroller>
+        <app-post-card class="d-flex flex-row gap-3 justify-content-start px-4 mt-3 post-card"></app-post-card>
+      </div>
+
+      <!-- Right Arrow -->
+      <button class="scroll-btn right" (click)="scrollRight('featured')">
+        &#10095;
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="featured-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+        <h2 class="text-white"> Featured Posts </h2>
+        <p class="text-white">This will show you all the featured posts available.</p>
+      </div>
+    </div>
+
+    Flex row for horizontal layout -->
+    <!-- <div>
+      <app-post-card class="d-flex flex-row flex-wrap gap-3 justify-content-start px-4 mt-3"></app-post-card>
+    </div>
+  </div>
+</section> 
+--> 
+
+
+<section class="container mt-5">
+  <div class="col-md-12 text-center">
+    <h2> Latest Posts </h2>
+    <p>Here you will see all the latest posts available.</p>
+  </div>
+
+  <!-- Flex row for horizontal layout -->
+  <div>
+    <app-post-card class="d-flex flex-row flex-wrap gap-3 justify-content-start px-4 mt-3"></app-post-card>
+  </div>
+</section>

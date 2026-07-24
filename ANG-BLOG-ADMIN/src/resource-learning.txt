@@ -1,0 +1,57 @@
+
+1. ng new ANG-BLOG-ADMIN
+2. Added bootstrap and imported it into style.css
+3. ng g c layouts/header
+4. ng g c layouts/footer
+5. ng g c dashboard
+6. We can add the icons to the project. T Follow below steps
+    i. Search in google for fontawesome cdn
+    ii. copy the cdn and paste it in index.html page as below
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    iii. Now go to fontawesome page below
+        https://fontawesome.com/search?q=list&o=r&f=classic%2Cbrands
+    iv. Search for the font and copy the class then paste that class in your html tag
+
+7. To perform crud operations on category, we need to create a Category component
+    ng g c categories
+
+8. For Category component, we are going to use Template driven form of angular
+
+
+9. Authentication and login : Adding this before the video part to work with backend spring server
+
+    i. ng g c auth/login
+    ii. As we have only two inputs here so we will use Template driven form here.
+    iii. ng g s services/auth
+
+    iv. Implemented below things here  
+        Login successfully.
+        Logout successfully.
+        Added roaster message. Yet to design roaster message
+        In header only show loggedInUser & logout button when a user logged in into the system. Yet to check on showing loggedInUser value as it is not showing currently.
+
+    v. Now implementin RouterGuard to restrict user from not directly hitting any other router paths other tha login component and do not use any resource.
+
+        How to implement RouterGuard
+            i. ng g guard services/auth
+
+10. In angular we are creating interface to keep our models data. It is same as DTO class in spring.
+    To generate Interface
+        ng g interface models/category
+
+11. Below are the components we are going to use for blog POST.
+    i. all-post component
+        ng g c posts/all-post
+    ii. new post component
+        ng g c posts/new-post
+
+
+
+
+
+
+
+
+
+

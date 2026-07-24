@@ -1,0 +1,41 @@
+<div class="contact-container" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="contact-card" @fadeIn>
+    <mat-card-header>
+      <mat-card-title>Contact Me</mat-card-title>
+      <mat-card-subtitle>
+        Have feedback, collaboration ideas, or questions? Feel free to reach out!
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Your Name</mat-label>
+          <input matInput name="name" ngModel required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Your Email</mat-label>
+          <input matInput type="email" name="email" ngModel required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Subject</mat-label>
+          <input matInput name="subject" ngModel required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Your Message</mat-label>
+          <textarea matInput rows="5" name="message" ngModel required></textarea>
+        </mat-form-field>
+
+        <div class="button-wrapper">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">
+            Send Message
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

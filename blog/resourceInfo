@@ -1,0 +1,112 @@
+--Docker
+docker version
+docker build . -t dockerimagealpaquita
+docker images
+
+
+Few Imp links
+1. https://www.base64decode.org/
+2. https://jwt.io/
+3. https://10015.io/tools/sha256-encrypt-decrypt
+4. https://datatables.net/
+
+APIs Request Body sample
+
+1. Post localhost:8080/api/auth/register
+    {
+
+        "name" : "sweety",
+        "email": "sweety@gmail.com",
+        "username" : "sweety",
+        "password" : "sweety"
+
+    }
+
+2. Login API
+    api : POST localhost:8080/api/auth/login
+    {
+
+        "usernameOrEmail" : "sweety",
+        "password" : "sweety"
+
+    }
+
+3. Post creation
+    api: POST localhost:8080/api/posts
+
+    {
+        "title" : "title11",
+        "author" : "author11",
+        "content" : "content11 ............",
+        "obsolete" : 0
+    }
+
+    After introducin category, see updated post creation body sample
+    {
+
+        "title": "Title2",
+        "author": "Author2",
+        "content": "Content2 sjoyld habe",
+        "obsolete": 0,
+        "categoryId" : 1
+    }
+4. Get all the Posts
+    API: GET localhost:8080/api/posts
+
+5. Update the post
+    API: PUT  localhost:8080/api/posts/6
+    {
+
+        "title": "title11",
+        "author": "author11",
+        "content": "content11 ............",
+        "obsolete": 0
+    }
+
+6. Get a specific post
+    API: GET localhost:8080/api/posts/13
+
+7. Delete a specific post
+    API: DELETE localhost:8080/api/posts/13
+
+8. Category creation api
+    API: PoST localhost:8080/api/categories
+    {
+        "name" : "category1",
+        "description" : "description1"
+    }
+
+9. Get a category
+    GET localhost:8080/api/categories/1
+
+10. Get All the categories
+    GET localhost:8080/api/categories
+
+11. Update Category
+    PUT localhost:8080/api/categories/1
+    {
+        "name" : "name2",
+        "description" : "description2updated"
+    }
+
+12. Delete a Category
+    DELETE localhost:8080/api/categories/2
+
+
+13. Get Posts by categoryId
+    API: GET localhost:8080/api/posts/category/3
+
+
+14. Swagger ui url
+    http://localhost:8080/swagger-ui/index.html
+    http://localhost:8080/v3/api-docs
+
+
+
+
+ 3. What is the limitation of Spring Security Basic Auth
+    i. To access each REST Api client has to pass the username/password  everytime.
+    ii. This is insecure and vulnerable, so to avoid it spring security with JWT token authentication is required
+        Once client send username password, then authenticate api will generate a JWT token and send it back to clinet.
+        Next time onwards every api call will include JWT token in API Request header.
+

@@ -1,0 +1,77 @@
+<div *ngFor="let post of posts" (click)="goToPost(post.id)" class="card shadow-effect mb-3"
+  style="cursor: pointer">
+  <div class="card-image">
+  <img
+    *ngIf="post?.image; else defaultImage"
+    [src]="post.image"
+    alt="post image"
+    class="card-img-top"
+  />
+   <!-- [routerLink]="['/posts', post.id]" -->
+  </div>
+  <ng-template #defaultImage>
+    <img src="https://picsum.photos/seed/picsum/800/600" class="card-img-top" alt="default image" />
+  </ng-template>
+
+  <div class="card-body">
+    <div>
+    <b><small class="bg-white text-danger text-center">Author: {{ post.author }}</small></b>
+    <b><small class="bg-white text-success text-center mx-3">{{post.category.name}}</small></b>
+    <b><small class="bg-white text-info text-center mx-3">Views: 100</small></b>
+    </div>
+    <b>
+      <small class="bg-white text-warning text-center">
+        LAST UPDATED - {{ post.createdDate | date:'MMMM yyyy' }}
+      </small>
+    </b>
+    <b><h2 class="my-1">{{ post.title }}</h2></b>
+    <!-- <div [innerHTML]="post.content"></div> -->
+    <p>{{ getPlainText(post.content) | slice:0:200 }}...</p>
+  </div>
+</div>
+
+<!-- <div  class="card shadow-effect mb-3">
+  <img
+    
+    src="https://picsum.photos/seed/picsum/800/600"
+    alt="post image"
+    class="card-img-top"
+  />
+  <ng-template #defaultImage>
+    <img src="https://picsum.photos/seed/picsum/800/600" class="card-img-top" alt="default image" />
+  </ng-template>
+
+  <div class="card-body">
+    <small class="bg-white text-danger text-center">Author: {{ 'author' }}</small>
+    <small class="bg-white text-success text-center mx-3" >Has Code</small>
+    <small class="bg-white text-info text-center mx-3">Views: 100</small>
+
+    <h5 class="my-1">{{ 'post.title' }}</h5>
+    <p>{{ 'post.content '| slice:0:200 }}...</p>
+
+    <small class="bg-white text-warning text-center">
+      LAST UPDATED - {{ 'post.createdDate' | date:'MMMM yyyy' }}
+    </small>
+  </div>
+</div> -->
+
+
+
+
+<!-- <div class="card shadow-effect">
+    <img src="https://picsum.photos/seed/picsum/800/600" alt="post image" class="card-img-top">
+    <div class="card-body">
+        <small class="bg-white text-danger text-center">Design</small>
+        <small class="bg-white text-success text-center mx-3">Featured</small>
+        <small class="bg-white text-info text-center mx-3">Views 100 </small>
+        <h5 class="my-1">How to add a post in your blog</h5>
+        <p>Easy to use, stylish placeholders
+            Just add your desired image size (width & height) after our URL, and you'll get a random image.Easy to use, stylish placeholders
+            Just add your desired image size (width & height) after our URL, and you'll get a random image.Easy to use, stylish placeholders
+            .</p>
+
+        <small class="bg-white text-warning text-center">LAST UPDATED - June 2024 </small>
+    </div>
+</div> -->
+
+

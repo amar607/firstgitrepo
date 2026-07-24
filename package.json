@@ -1,0 +1,18 @@
+{
+  "name": "my-blog-app",
+  "private": true,
+  "_comment": "Run frontend/backend separately",
+
+  "scripts": {
+    "client": "cd ang-blog-app && npx ng serve --port 4200",
+    "admin": "cd ANG-BLOG-ADMIN && npx ng serve --port 4300",
+
+    "backend:build": "cd blog && ./mvnw clean install",
+    "backend": "cd blog && ./mvnw spring-boot:run",
+
+    "frontend:install": "cd ang-blog-app && npm install",
+    "admin:install": "cd ANG-BLOG-ADMIN && npm install",
+
+    "start": "npm run backend"
+  }
+}

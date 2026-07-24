@@ -1,0 +1,19 @@
+<header class="navbar navbar-expand-lg fixed-top">
+    <div class="col-md-4"></div>
+        <!-- Back Button -->
+    <div>
+      <button class="arrow_back" mat-button (click)="goBack()">
+        <mat-icon >arrow_back</mat-icon>
+      </button>
+    </div>
+
+    <div class="container justify-content-center col-md-4">
+        <a class="site-logo" routerLink="/dashboard"> ANG BLOG </a>
+    </div>
+    <div class="container justify-content-center col-md-4">
+        <div *ngIf="isUserLoggedIn$ | async">
+            <a class="mx-3" > {{userEmail}}</a>
+            <button class="btn btn-sm btn-info bg-secondary-theme text-theme-primary" (click)="logout()"> Logout </button>
+        </div>
+    </div>
+</header>

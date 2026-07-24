@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand fixed-top">
+  <div class="container d-flex flex-nowrap justify-content-between align-items-center">
+
+    <!-- Back Button -->
+    <div>
+      <button class="arrow_back" mat-button (click)="goBack()">
+        <mat-icon >arrow_back</mat-icon>
+      </button>
+    </div>
+
+   <!-- Nav Links -->
+<div class="d-flex justify-content-center flex-nowrap" style="flex-grow: 1;">
+  <ul class="navbar-nav d-flex flex-row mx-auto nav-animated">
+    <li class="nav-item mx-3"><a class="nav-link btn-theme" (click)="filterPosts('Home')"><b>Home</b></a></li>
+    <li class="nav-item mx-3"><a class="nav-link btn-theme" (click)="filterPosts('Java')"><b>Java</b></a></li>
+    <li class="nav-item mx-3"><a class="nav-link btn-theme" (click)="filterPosts('Spring Boot')"><b>Spring Boot</b></a></li>
+    <li class="nav-item mx-3"><a class="nav-link btn-theme" (click)="filterPosts('SQL')"><b>SQL</b></a></li>
+    <li class="nav-item mx-3"><a class="nav-link btn-theme" (click)="filterPosts('AWS')"><b>AWS</b></a></li>
+  </ul>
+</div>
+
+
+    <!-- Right Spacer -->
+    <div style="width: 40px;"></div>
+
+  </div>
+</nav>

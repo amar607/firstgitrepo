@@ -1,0 +1,106 @@
+1. ng new ang-blog-app
+
+2. Component Creation
+    Create layout components
+        ImpNotes
+            We cannot name a components using space, so always use - or _ to divide the names
+        1. ng g c layouts/header
+        2. ng g c layouts/category-navbar
+        3. ng g c layouts/footer
+
+    Create BLOG components
+        1. ng g c pages/home 
+        2. ng g c pages/single-category
+        3. ng g c pages/single-post
+        4. ng g c pages/terms-and-conditions
+        5. ng g c pages/contact-us
+        6. ng g c pages/about-us
+
+    Create form components
+        1. ng g c subscription-form
+        2. ng g c comments/comment-form
+        3. ng g c comments/comment-list
+
+3. Router module changes
+    Add router path and mapped components in app-router.module.ts
+    To have it work you need to add <router-outlet></router-outlet> tag inside app component html
+
+4. Design blog using bootstrap
+
+    1. To install bootstrap in your application, run below command
+        i. open new terminal
+        ii. npm install bootstrap@4.6
+            To install latest version use below commend
+                npm i bootstrap@5.3.3 or npm i bootstrap@latest get it from https://getbootstrap.com/
+
+    2. To use bootstrap method into our angular project there are three methods
+        Note: Make sure to use only one from below in your project.
+              It you are using one then remove changes related to other ways.
+
+        i.  Add bootstrap css file to the angular using angular.json file
+            open angular.json file
+            Add bootstrap.min.css path within styles section
+            "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            Restrart the app using ng serve
+
+        ii. Add bootstrap css file to index.html like below
+            <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+          
+        iii. Add bootstrap css file directly into styles.css
+            @import '~bootstrap/dist/css/bootstrap.min.css'
+
+5. create common css variable value
+    Create them in styles.css
+    We put those css variables inside below root
+        :root{
+            --primary-color:  #026467;
+        }
+    Like in typescript we use let or const to define a variabl, but here we use -- to define
+    Get the color codes from https://www.figma.com/color-wheel/
+
+6. We can define font in angular app like below
+    copy the style url from below google font link as per the style we want and paste it into style.css
+    https://fonts.google.com/selection/embed
+    Copy the font-family and paste within body section 
+
+7. Design
+    1. Design Header component
+    2. Design Category nav bar
+        As it is a nav bar so we can use html5 <nav></nav> tag
+
+
+8. In bootstrap, it has divided whole page into 12 column grids
+
+
+
+
+10. Dockerize
+
+Development Build (Live Reload on Port 4200)
+dockerfile
+Copy
+Edit
+FROM node:20.19.4
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install -g @angular/cli@16.2.12 && npm install
+
+COPY . .
+
+EXPOSE 4200
+
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
+Build & Run
+
+bash
+Copy
+Edit
+docker build -t angular-dev .
+docker run -it --rm -p 4200:4200 angular-dev
+Access at → http://localhost:4200
+
+
+
+

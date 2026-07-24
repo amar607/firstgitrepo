@@ -1,0 +1,67 @@
+
+1. install angular using npm using below command
+    npm install -g @angular/cli
+
+2. Once installed, use below command to create a new angular project
+    ng new blogproject
+
+3. To run angular project
+    ng serve
+
+4. Create components using : ng g component <componentname>
+    1. appheader component
+    2. Main component
+
+5. To use bootstrap
+    Download the component like nav code from below website
+        https://getbootstrap.com/docs/4.0/getting-started/introduction/
+    Add cdn into head tag of html
+
+6. Routing
+    Whatever component we want to show or navigate will be inputted into <router-outlet></router-outlet> tag.
+    This tag will be present inside app.html
+    routerlink='/about'
+
+7. We will use reactive form here 
+    Add ReactiveFormsModule, FormsModule module in app.module.ts
+
+8. Install json-server
+    npm i -g json-server
+
+    This json-server is used to use dummy api and dummy data.
+    We will use  our backend server which i created using springboot.
+
+9. Create a service
+    Create a services folder and create a service component
+    ng g s Services/service
+
+10. To use http, check below points
+    -> import {HttpClient} in the component
+    -> create objcet of HttpClient inside constructor argument
+    -> Import HttpClientModule in app.module.ts file
+    -> Add HttpClientModule in he imports section
+
+11. How to make the form responsive
+    Add whole content in div with below class
+    <div class="col-sm-6 mx-auto">
+
+12. Create component to show blog datas
+    ng g c home
+    here we will show the all available blogs in cards
+    each card will be having link to content, for this we used <a> tag within span
+
+13. lets create blog component
+    This component will show the content of each blog .
+    Whenever user click on content link to view that blog then he will be redirected to this page.
+    ng g c blog-content
+
+14. Whenever we want to route the url path like blog/id, then we are routing in below way in routing.module.ts
+    {path:'blog/:id', component:BlogContentComponent}
+
+15. To get any url paramter, we need one module named as ActivatedRoute.
+    Import this ActivatedRoute in component.
+    Create object of this ActivatedRoute within constructor parameter.
+
+16. If after submission need to route to another page then use below
+    import { Router } from '@angular/router';
+    this.navigate.navigateByUrl('routePathHere');

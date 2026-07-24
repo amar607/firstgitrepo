@@ -1,0 +1,174 @@
+
+<div class="container mt-4">
+  <h3 class="mb-4">{{ isEditMode ? 'Edit' : 'Add' }} Blog Post</h3>
+  <form (ngSubmit)="savePost(postForm)" #postForm="ngForm">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" [(ngModel)]="blogPost.title" name="title" 
+      required #titleRef="ngModel" [ngClass]="{ 'is-invalid': titleRef.invalid && titleRef.touched }"/>
+
+    <div *ngIf="titleRef.invalid && titleRef.touched" class="invalid-feedback">
+           <span>"Title is required"</span> 
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label>Author</label>
+      <input type="text" class="form-control" [(ngModel)]="blogPost.author" name="author" required />
+    </div>
+
+    <div class="form-group">
+      <label>Content</label>
+      <quill-editor class="form-control" rows="5" [(ngModel)]="blogPost.content" name="content" minlength="10"
+       #contentRef="ngModel" [ngClass]="{ 'is-invalid': contentRef.invalid && contentRef.touched }" > </quill-editor>
+    
+        <div *ngIf="contentRef.invalid && contentRef.touched" class="invalid-feedback">
+           <span>"Content is required and should be minimum of 10 character"</span> 
+        </div>
+    </div>
+
+     <div class="form-group">
+                    <label > Please select a post category </label>
+                    <select name="" id="" class="form-control" [(ngModel)]="blogPost.categoryId" name="categoryId" required>
+                        <option value="" disabled>Please select a category </option>
+                        <option [value]="category.id" *ngFor='let category of categoriesArray'>{{category.name}}</option>
+                    </select>
+    </div>
+
+    <!-- Image Upload -->
+  <div class="form-group">
+    <label>Upload Image</label>
+    <!-- <input type="file" #imageInput="ngModel" class="form-control-file" (change)="onImageSelected($event)" accept="image/*" required /> -->
+    <input
+        type="file"
+        id="image"
+        name="image"
+        class="form-control-file"
+        accept="image/*"
+        required
+        #imageInput="ngModel"
+        (change)="onImageSelected($event)"
+        ngModel
+        />
+
+    <!-- Validation message -->
+    <div *ngIf="imageInput.invalid && imageInput.touched" class="text-danger">
+      <span>Image is required.</span>
+    </div>
+    <div *ngIf="imagePreview" class="mt-2">
+      <p><strong>Preview:</strong></p>
+      <img [src]="imagePreview" alt="Image preview" class="img-thumbnail" width="200" />
+    </div>
+  </div>
+
+  <!-- Code Snippet -->
+  <div class="form-group">
+    <label>Insert Code Snippet (Java/SQL)</label>
+    <textarea
+      class="form-control"
+      rows="5"
+      [(ngModel)]="blogPost.codeSnippet"
+      name="codeSnippet"
+      placeholder="Insert Java or SQL code here"
+      required
+    ></textarea>
+  </div>
+
+    <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Create' }}</button>
+    <button type="button" class="btn btn-secondary ml-2" (click)="resetForm()">Reset</button>
+  </form>
+
+  <hr />
+
+  <h4>All Blog Posts</h4>
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Content</th>
+        <th>Category ID</th>
+        <th>Created Date</th>
+        <th>Code Snippet</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of blogPosts">
+        <td>{{ post.title }}</td>
+        <td>{{ post.author }}</td>
+        <td>{{ post.content }}</td>
+        <td>{{ post.categoryId }}</td>
+        <td>{{ post.createdDate | date: 'short' }}</td>
+        <td>{{ post.codeSnippet ? 'Yes' : 'No' }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="editPost(post)">Edit</button>
+          <button class="btn btn-sm btn-danger ml-2" (click)="deletePost(post.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3 class="text-theme-primary"> Add New Post</h3>
+            <p class="mb-5"> You can add your new post here </p>
+        </div>
+    </div>
+    <form #postForm = 'ngForm' (ngSubmit) = "onSubmit(postForm)">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card shodow-effect">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label> Title </label>
+                            <input type="text" class="form-control" (keyup)="onTitleChange($event)">
+                        </div>
+                        <div class="form-group">
+                            <label> Permalink </label>
+                            <input type="text" class="form-control" [(ngModel)]="permalink" name="permalink" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label> Excerpt </label>
+                            <textarea rows="10" cols="30" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label > Please select a post category </label>
+                    <select name="" id="" class="form-control">
+                        <option value="" disabled>Please select a category </option>
+                        <option value="" *ngFor='let category of categoriesArray'>{{category.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label > Post Image </label>
+                    <img [src]="imgsrc" class="form-control img-fluid img-preview">
+                    <input type="file" class="form-control" accept="image/*" (click) = showPreview($event)>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-12">
+                <div class="card shodow-effect">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label> Content </label>
+                            <textarea rows="10" cols="30" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center my-5">
+                <button class="btn btn-info btn-theme" > Save Post </button>
+                <button class="btn btn-warning mx-2" routerLink='/posts'> Back to Post </button>
+            </div>
+        </div>
+    </form>
+</div> -->

@@ -1,0 +1,15 @@
+.card{
+    background-color: var(--secondary-color);
+    width: 1300px;
+}
+
+
+
+.subs-text{
+    width: 500px;
+}
+
+h3{
+    background-color: var(--secondary-color);
+    color: var(-primary-color);
+}
