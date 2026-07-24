@@ -26,7 +26,7 @@ public class Post implements Serializable {
     @Column(name="author", nullable = false)
     private String author;
 
-    @Column(name="content", nullable = false)
+    @Column(name="content", nullable = false, length = 100000)
     private String content;
 
     @Column(name="obsolete")
